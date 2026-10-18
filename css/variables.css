@@ -32,3 +32,20 @@
 
   color-scheme: light;
 }
+
+/* Tema oscuro: se activa con data-theme="dark" en <html> */
+[data-theme='dark'] {
+  --primary-color: #6cb2ff;
+  --secondary-color: #3cc4da;
+  --bg-color: #0f1720;
+  --text-color: #e6edf3;
+
+  --surface-color: #17212c;
+  --border-color: #2c3a49;
+  --muted-color: #9fb0c1;
+  --on-primary-color: #0b1220;
+  --error-color: #ff8a80;
+  --success-color: #6fd49a;
+
+  color-scheme: dark;
+}
