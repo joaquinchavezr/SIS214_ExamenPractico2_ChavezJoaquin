@@ -1,0 +1,26 @@
+/* =========================================================
+   animations.css
+   Transiciones y animaciones (respetan prefers-reduced-motion)
+   ========================================================= */
+
+/* ---------- Cambio de tema claro / oscuro ---------- */
+body,
+.site_header,
+.profile_card,
+.entry,
+.project_card,
+.site_footer,
+.field input,
+.field textarea {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* ---------- Accesibilidad: movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
