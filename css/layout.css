@@ -58,3 +58,14 @@
 .section > * + * {
   margin-top: var(--spacing-md);
 }
+
+/* ---------- Tablet (768px – 1024px) ---------- */
+@media (min-width: 768px) {
+  .site_header {
+    padding: 0 var(--spacing-lg);
+  }
+
+  .content {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+}

@@ -364,3 +364,48 @@
   font-size: 0.85rem;
   text-align: center;
 }
+
+/* =========================================================
+   Tablet (768px – 1024px)
+   ========================================================= */
+@media (min-width: 768px) {
+  .profile_card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'photo name'
+      'photo role'
+      'photo contact';
+    column-gap: var(--spacing-lg);
+    row-gap: var(--spacing-xs);
+    align-items: center;
+    justify-items: start;
+    padding: var(--spacing-lg);
+    text-align: left;
+  }
+
+  .profile_photo {
+    grid-area: photo;
+  }
+
+  .profile_name {
+    grid-area: name;
+    align-self: end;
+  }
+
+  .profile_role {
+    grid-area: role;
+  }
+
+  .contact_list {
+    grid-area: contact;
+    align-self: start;
+    margin-top: var(--spacing-sm);
+  }
+
+  .skill_list,
+  .project_list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
