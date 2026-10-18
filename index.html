@@ -14,6 +14,8 @@
         <li><a href="#perfil">Perfil</a></li>
         <li><a href="#formacion">Formación</a></li>
         <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
   </header>
@@ -79,6 +81,80 @@
       </ul>
     </section>
 
+    <section id="proyectos" class="section">
+      <h2>Proyectos</h2>
+      <ul class="project_list">
+        <li>
+          <article class="project_card">
+            <h3 class="project_title">Sistema de gestión de torneos de esports</h3>
+            <p class="project_meta">Base de datos · 2026</p>
+            <p>
+              Diseño e implementación de una base de datos relacional para la gestión de
+              equipos, jugadores y torneos, con informe técnico formal. Desarrollado con MySQL.
+            </p>
+            <ul class="tag_list">
+              <li>MySQL</li>
+              <li>SQL</li>
+              <li>Modelo relacional</li>
+            </ul>
+          </article>
+        </li>
+        <li>
+          <article class="project_card">
+            <h3 class="project_title">Gestor académico</h3>
+            <p class="project_meta">Desarrollo web · 2026</p>
+            <p>
+              Diseño y desarrollo de un gestor académico para facilitar la inscripción de
+              estudiantes, el inicio de sesión, la creación de cuentas y la validación de materias.
+            </p>
+            <ul class="tag_list">
+              <li>Web</li>
+              <li>Autenticación</li>
+              <li>Formularios</li>
+            </ul>
+          </article>
+        </li>
+        <li>
+          <article class="project_card">
+            <h3 class="project_title">CV interactivo</h3>
+            <p class="project_meta">Desarrollo web · 2026</p>
+            <p>
+              Este mismo sitio: landing page responsiva con tema claro/oscuro, filtro de
+              proyectos, formulario validado y consumo de la API de GitHub.
+            </p>
+            <ul class="tag_list">
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>JavaScript</li>
+            </ul>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contacto" class="section">
+      <h2>Contacto</h2>
+      <p>¿Quieres escribirme? Completa el formulario y revisaré tu mensaje.</p>
+      <form id="contact_form" class="contact_form" novalidate>
+        <p class="field">
+          <label for="field_name">Nombre</label>
+          <input type="text" id="field_name" name="field_name" autocomplete="name" required minlength="2" maxlength="80">
+          <span id="field_name_error" class="field_error"></span>
+        </p>
+        <p class="field">
+          <label for="field_email">Correo electrónico</label>
+          <input type="email" id="field_email" name="field_email" autocomplete="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]+">
+          <span id="field_email_error" class="field_error"></span>
+        </p>
+        <p class="field">
+          <label for="field_message">Mensaje</label>
+          <textarea id="field_message" name="field_message" rows="5" required minlength="10" maxlength="500"></textarea>
+          <span id="field_message_error" class="field_error"></span>
+        </p>
+        <button type="submit" class="button_primary">Enviar mensaje</button>
+        <p id="form_status" class="form_status"></p>
+      </form>
+    </section>
   </main>
 
   <footer class="site_footer">
