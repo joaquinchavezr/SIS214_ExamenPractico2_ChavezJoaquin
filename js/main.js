@@ -4,5 +4,7 @@
  * Los módulos se cargan con type="module", por lo que el DOM ya está disponible.
  */
 import { initTheme } from './theme.js';
+import { initMenu } from './menu.js';
 
 initTheme();
+initMenu();
