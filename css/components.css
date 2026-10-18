@@ -1,0 +1,366 @@
+/* =========================================================
+   components.css
+   Componentes de interfaz (mobile-first)
+   ========================================================= */
+
+/* ---------- Accesibilidad: enlace de salto ---------- */
+.skip_link {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  z-index: 30;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--primary-color);
+  color: var(--on-primary-color);
+  border-radius: var(--radius);
+  transform: translateY(-200%);
+}
+
+.skip_link:focus {
+  transform: translateY(0);
+}
+
+.content:focus {
+  outline: none;
+}
+
+/* ---------- Cabecera y navegación ---------- */
+.brand {
+  margin-right: auto;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.main_nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-0.5rem);
+}
+
+.main_nav.is_open {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+
+.nav_list {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav_list a {
+  display: block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+
+.nav_list a:hover {
+  background-color: var(--surface-color);
+  color: var(--primary-color);
+}
+
+.theme_toggle,
+.menu_toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.theme_toggle_icon {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--text-color);
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--text-color) 50%, transparent 50%);
+}
+
+.menu_toggle_bar {
+  position: relative;
+  display: block;
+  width: 1.1rem;
+  height: 2px;
+  background-color: var(--text-color);
+}
+
+.menu_toggle_bar::before,
+.menu_toggle_bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-color);
+}
+
+.menu_toggle_bar::before {
+  top: -6px;
+}
+
+.menu_toggle_bar::after {
+  top: 6px;
+}
+
+.menu_toggle[aria-expanded='true'] .menu_toggle_bar {
+  background-color: transparent;
+}
+
+.menu_toggle[aria-expanded='true'] .menu_toggle_bar::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu_toggle[aria-expanded='true'] .menu_toggle_bar::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* ---------- Tarjeta de perfil (aside) ---------- */
+.profile_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md);
+  background-color: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.profile_photo {
+  width: 9rem;
+  height: 9rem;
+  border: 3px solid var(--secondary-color);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile_name {
+  font-size: 1.4rem;
+}
+
+.profile_role {
+  color: var(--muted-color);
+}
+
+.contact_list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+.contact_label {
+  display: block;
+  color: var(--muted-color);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- Encabezados de sección ---------- */
+.section h2 {
+  padding-left: var(--spacing-sm);
+  border-left: 4px solid var(--secondary-color);
+  font-size: 1.5rem;
+}
+
+/* ---------- Formación ---------- */
+.entry {
+  padding: var(--spacing-md);
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+}
+
+.entry > * + * {
+  margin-top: var(--spacing-xs);
+}
+
+.entry_title {
+  font-size: 1.05rem;
+}
+
+.entry_meta {
+  color: var(--muted-color);
+  font-size: 0.9rem;
+}
+
+/* ---------- Habilidades ---------- */
+.skill_list {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--spacing-xs) var(--spacing-md);
+}
+
+.skill_name {
+  font-weight: 600;
+}
+
+.skill_level {
+  color: var(--muted-color);
+  font-size: 0.9rem;
+}
+
+.skill_meter {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 0.6rem;
+}
+
+/* ---------- Proyectos ---------- */
+.project_list {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.project_card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  height: 100%;
+  padding: var(--spacing-md);
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+}
+
+.project_title {
+  font-size: 1.05rem;
+}
+
+.project_meta {
+  color: var(--muted-color);
+  font-size: 0.85rem;
+}
+
+.tag_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs) var(--spacing-sm);
+  margin-top: auto;
+}
+
+.tag_list li {
+  padding: 0.1rem 0.6rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+/* ---------- Formulario de contacto ---------- */
+.contact_form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 36rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.field input,
+.field textarea {
+  padding: 0.65rem 0.8rem;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+}
+
+.field textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.field input.is_valid,
+.field textarea.is_valid {
+  border-color: var(--success-color);
+}
+
+.field input[aria-invalid='true'],
+.field textarea[aria-invalid='true'] {
+  border-color: var(--error-color);
+}
+
+.field_error {
+  min-height: 1.3em;
+  color: var(--error-color);
+  font-size: 0.85rem;
+}
+
+.form_status {
+  min-height: 1.5em;
+  font-size: 0.95rem;
+}
+
+.form_status.is_success {
+  color: var(--success-color);
+}
+
+.form_status.is_error {
+  color: var(--error-color);
+}
+
+.button_primary,
+.button_secondary {
+  align-self: flex-start;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button_primary {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--on-primary-color);
+}
+
+.button_primary:hover {
+  filter: brightness(1.1);
+}
+
+.button_secondary {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* ---------- Pie de página ---------- */
+.site_footer {
+  padding: var(--spacing-lg) var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  color: var(--muted-color);
+  font-size: 0.85rem;
+  text-align: center;
+}

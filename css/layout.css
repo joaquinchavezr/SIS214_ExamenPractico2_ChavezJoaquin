@@ -1,0 +1,60 @@
+/* =========================================================
+   layout.css
+   Estructura general de la página (estrategia mobile-first)
+   Móvil: < 768px (base) · Tablet: 768px–1024px · Escritorio: > 1024px
+   ========================================================= */
+
+/* ---------- Móvil (estilos base) ---------- */
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'profile'
+    'content'
+    'footer';
+  min-height: 100vh;
+  padding-top: var(--header-height);
+}
+
+.profile_card {
+  grid-area: profile;
+}
+
+.content {
+  grid-area: content;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.site_footer {
+  grid-area: footer;
+}
+
+.site_header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  height: var(--header-height);
+  padding: 0 var(--spacing-md);
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section {
+  padding-block: var(--spacing-lg);
+}
+
+.section:first-child {
+  padding-top: 0;
+}
+
+.section + .section {
+  border-top: 1px solid var(--border-color);
+}
+
+.section > * + * {
+  margin-top: var(--spacing-md);
+}
