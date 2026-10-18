@@ -6,7 +6,9 @@
 import { initTheme } from './theme.js';
 import { initMenu } from './menu.js';
 import { initProjectFilter } from './filter.js';
+import { initContactForm } from './form.js';
 
 initTheme();
 initMenu();
 initProjectFilter();
+initContactForm();
