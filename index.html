@@ -7,9 +7,16 @@
   <meta name="description" content="CV interactivo de Joaquin Oscar Chavez Rivamontan, estudiante de Ingeniería en Sistemas.">
 </head>
 <body class="page">
+  <a class="skip_link" href="#contenido_principal">Saltar al contenido principal</a>
   <header class="site_header">
     <a class="brand" href="#perfil">Joaquin Chavez</a>
-    <nav id="main_nav" class="main_nav">
+    <button id="theme_toggle" class="theme_toggle" type="button" aria-pressed="false" aria-label="Modo oscuro">
+      <span class="theme_toggle_icon" aria-hidden="true"></span>
+    </button>
+    <button id="menu_toggle" class="menu_toggle" type="button" aria-expanded="false" aria-controls="main_nav" aria-label="Menú de navegación">
+      <span class="menu_toggle_bar" aria-hidden="true"></span>
+    </button>
+    <nav id="main_nav" class="main_nav" aria-label="Navegación principal">
       <ul class="nav_list">
         <li><a href="#perfil">Perfil</a></li>
         <li><a href="#formacion">Formación</a></li>
@@ -20,7 +27,7 @@
     </nav>
   </header>
 
-  <aside class="profile_card">
+  <aside class="profile_card" aria-label="Resumen del perfil">
     <img class="profile_photo" src="assets/images/perfil.jpg" alt="Fotografía de Joaquin Oscar Chavez Rivamontan" width="160" height="160">
     <h1 class="profile_name">Joaquin Oscar Chavez Rivamontan</h1>
     <p class="profile_role">Estudiante de Ingeniería en Sistemas</p>
@@ -31,9 +38,9 @@
     </ul>
   </aside>
 
-  <main id="contenido_principal" class="content">
-    <section id="perfil" class="section">
-      <h2>Perfil profesional</h2>
+  <main id="contenido_principal" class="content" tabindex="-1">
+    <section id="perfil" class="section" aria-labelledby="perfil_titulo">
+      <h2 id="perfil_titulo">Perfil profesional</h2>
       <p>
         Soy estudiante de Ingeniería de Sistemas. Actualmente me encuentro aprendiendo y
         desarrollando proyectos, principalmente de front-end. Si bien estoy en proceso de
@@ -42,8 +49,8 @@
       </p>
     </section>
 
-    <section id="formacion" class="section">
-      <h2>Formación académica</h2>
+    <section id="formacion" class="section" aria-labelledby="formacion_titulo">
+      <h2 id="formacion_titulo">Formación académica</h2>
       <article class="entry">
         <h3 class="entry_title">Ingeniería en Sistemas</h3>
         <p class="entry_meta">Universidad Católica Boliviana, La Paz · 2025 — presente</p>
@@ -55,8 +62,8 @@
       </article>
     </section>
 
-    <section id="habilidades" class="section">
-      <h2>Habilidades técnicas</h2>
+    <section id="habilidades" class="section" aria-labelledby="habilidades_titulo">
+      <h2 id="habilidades_titulo">Habilidades técnicas</h2>
       <ul class="skill_list">
         <li class="skill">
           <span class="skill_name">HTML5 y CSS3</span>
@@ -81,8 +88,8 @@
       </ul>
     </section>
 
-    <section id="proyectos" class="section">
-      <h2>Proyectos</h2>
+    <section id="proyectos" class="section" aria-labelledby="proyectos_titulo">
+      <h2 id="proyectos_titulo">Proyectos</h2>
       <ul class="project_list">
         <li>
           <article class="project_card">
@@ -132,27 +139,27 @@
       </ul>
     </section>
 
-    <section id="contacto" class="section">
-      <h2>Contacto</h2>
+    <section id="contacto" class="section" aria-labelledby="contacto_titulo">
+      <h2 id="contacto_titulo">Contacto</h2>
       <p>¿Quieres escribirme? Completa el formulario y revisaré tu mensaje.</p>
-      <form id="contact_form" class="contact_form" novalidate>
+      <form id="contact_form" class="contact_form" novalidate aria-label="Formulario de contacto">
         <p class="field">
           <label for="field_name">Nombre</label>
-          <input type="text" id="field_name" name="field_name" autocomplete="name" required minlength="2" maxlength="80">
+          <input type="text" id="field_name" name="field_name" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="field_name_error">
           <span id="field_name_error" class="field_error"></span>
         </p>
         <p class="field">
           <label for="field_email">Correo electrónico</label>
-          <input type="email" id="field_email" name="field_email" autocomplete="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]+">
+          <input type="email" id="field_email" name="field_email" autocomplete="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]+" aria-describedby="field_email_error">
           <span id="field_email_error" class="field_error"></span>
         </p>
         <p class="field">
           <label for="field_message">Mensaje</label>
-          <textarea id="field_message" name="field_message" rows="5" required minlength="10" maxlength="500"></textarea>
+          <textarea id="field_message" name="field_message" rows="5" required minlength="10" maxlength="500" aria-describedby="field_message_error"></textarea>
           <span id="field_message_error" class="field_error"></span>
         </p>
         <button type="submit" class="button_primary">Enviar mensaje</button>
-        <p id="form_status" class="form_status"></p>
+        <p id="form_status" class="form_status" role="status" aria-live="polite"></p>
       </form>
     </section>
   </main>
