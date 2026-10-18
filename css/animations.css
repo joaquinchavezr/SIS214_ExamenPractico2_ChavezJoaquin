@@ -30,6 +30,17 @@ body,
   transition: top 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
 }
 
+/* ---------- Indicador de carga (estado loading) ---------- */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.status_text[data-state='loading']::before {
+  animation: spin 0.8s linear infinite;
+}
+
 /* ---------- Accesibilidad: movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
   *,
