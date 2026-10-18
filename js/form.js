@@ -4,8 +4,10 @@
  * Usa la API de validación nativa de HTML5 (required, minlength, type="email",
  * pattern, validity) y la complementa con:
  *   - evento "input": validación en tiempo real con mensajes visuales;
- *   - evento "submit": event.preventDefault() para evitar la recarga de la página.
+ *   - evento "submit": event.preventDefault() para evitar la recarga de la página;
+ *   - envío real del mensaje a Formspree mediante fetch (async/await + try...catch).
  */
+const FORMSPREE_URL = 'https://formspree.io/f/mnpjrbzr';
 
 /** Traduce el estado de validez nativo a un mensaje legible. */
 const getErrorMessage = (field) => {
@@ -18,12 +20,26 @@ const getErrorMessage = (field) => {
   return field.validationMessage;
 };
 
+/** Envía los datos a Formspree; lanza un error si la respuesta no es 2xx. */
+const sendMessage = async (payload) => {
+  const response = await fetch(FORMSPREE_URL, {
+    method: 'POST',
+    body: payload,
+    headers: { Accept: 'application/json' },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Formspree respondió con el estado ${response.status}`);
+  }
+};
+
 export const initContactForm = () => {
   const form = document.getElementById('contact_form');
   const status = document.getElementById('form_status');
   if (!form || !status) return;
 
   const fields = [...form.querySelectorAll('input, textarea')];
+  const submitButton = form.querySelector('button[type="submit"]');
 
   const setStatus = (message, type = '') => {
     status.textContent = message;
@@ -57,7 +73,7 @@ export const initContactForm = () => {
     });
   });
 
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const invalidFields = fields.filter((field) => !validateField(field));
@@ -67,11 +83,31 @@ export const initContactForm = () => {
       return;
     }
 
-    // Demostración: no existe backend, así que el mensaje no se envía a ningún servidor.
-    // Para un envío real se puede reemplazar este bloque por un fetch() a un servicio como Formspree.
     const name = form.elements.field_name.value.trim();
-    form.reset();
-    fields.forEach(clearFieldState);
-    setStatus(`¡Gracias, ${name}! El formulario es válido (demostración: no se envía a ningún servidor).`, 'success');
+    const payload = new FormData();
+    payload.append('name', name);
+    payload.append('email', form.elements.field_email.value.trim());
+    payload.append('message', form.elements.field_message.value.trim());
+
+    // Evita envíos duplicados mientras la petición está en curso.
+    submitButton.disabled = true;
+    setStatus('Enviando mensaje…');
+
+    try {
+      await sendMessage(payload);
+      form.reset();
+      fields.forEach(clearFieldState);
+      setStatus(`¡Gracias, ${name}! Tu mensaje fue enviado correctamente.`, 'success');
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+      setStatus(
+        error instanceof TypeError
+          ? 'No hay conexión. Revisa tu internet e inténtalo de nuevo.'
+          : 'No se pudo enviar el mensaje. Inténtalo de nuevo en unos minutos.',
+        'error',
+      );
+    } finally {
+      submitButton.disabled = false;
+    }
   });
 };

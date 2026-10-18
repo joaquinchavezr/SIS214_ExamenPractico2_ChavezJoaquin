@@ -56,8 +56,8 @@ fácil de mantener.
 3. **Filtro de proyectos:** búsqueda por texto y categoría en tiempo real. Los datos originales
    están congelados con `Object.freeze()` y se procesan con la tubería `.filter().filter().map()`.
 4. **Formulario de contacto:** `event.preventDefault()` en `submit`, validación nativa de HTML5
-   con mensajes en tiempo real mediante el evento `input`. Es una demostración: no envía datos
-   a ningún servidor.
+   con mensajes en tiempo real mediante el evento `input`. Si los datos son válidos, el mensaje
+   se envía con `fetch` al servicio Formspree y llega al correo del autor.
 5. **API de GitHub:** `fetch` con `async/await`, `try...catch`, verificación de `response.ok`,
    manejo de los códigos 400, 403, 404 y 500, y estados visibles *loading*, *success* y *error*.
 
