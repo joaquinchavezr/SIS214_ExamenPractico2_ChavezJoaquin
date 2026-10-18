@@ -95,53 +95,23 @@
 
     <section id="proyectos" class="section" aria-labelledby="proyectos_titulo">
       <h2 id="proyectos_titulo">Proyectos</h2>
-      <ul class="project_list">
-        <li>
-          <article class="project_card">
-            <h3 class="project_title">Sistema de gestión de torneos de esports</h3>
-            <p class="project_meta">Base de datos · 2026</p>
-            <p>
-              Diseño e implementación de una base de datos relacional para la gestión de
-              equipos, jugadores y torneos, con informe técnico formal. Desarrollado con MySQL.
-            </p>
-            <ul class="tag_list">
-              <li>MySQL</li>
-              <li>SQL</li>
-              <li>Modelo relacional</li>
-            </ul>
-          </article>
-        </li>
-        <li>
-          <article class="project_card">
-            <h3 class="project_title">Gestor académico</h3>
-            <p class="project_meta">Desarrollo web · 2026</p>
-            <p>
-              Diseño y desarrollo de un gestor académico para facilitar la inscripción de
-              estudiantes, el inicio de sesión, la creación de cuentas y la validación de materias.
-            </p>
-            <ul class="tag_list">
-              <li>Web</li>
-              <li>Autenticación</li>
-              <li>Formularios</li>
-            </ul>
-          </article>
-        </li>
-        <li>
-          <article class="project_card">
-            <h3 class="project_title">CV interactivo</h3>
-            <p class="project_meta">Desarrollo web · 2026</p>
-            <p>
-              Este mismo sitio: landing page responsiva con tema claro/oscuro, filtro de
-              proyectos, formulario validado y consumo de la API de GitHub.
-            </p>
-            <ul class="tag_list">
-              <li>HTML5</li>
-              <li>CSS3</li>
-              <li>JavaScript</li>
-            </ul>
-          </article>
-        </li>
-      </ul>
+      <form id="project_filter" class="filter_bar" role="search" aria-label="Filtrar proyectos">
+        <p class="filter_field">
+          <label for="project_search">Buscar</label>
+          <input type="search" id="project_search" name="project_search" placeholder="Nombre o tecnología" autocomplete="off">
+        </p>
+        <p class="filter_field">
+          <label for="project_category">Categoría</label>
+          <select id="project_category" name="project_category">
+            <option value="all">Todas</option>
+            <option value="web">Desarrollo web</option>
+            <option value="datos">Base de datos</option>
+          </select>
+        </p>
+        <button type="submit" class="button_secondary">Buscar</button>
+      </form>
+      <p id="project_status" class="status_text" role="status" aria-live="polite"></p>
+      <ul id="project_list" class="project_list"></ul>
     </section>
 
     <section id="contacto" class="section" aria-labelledby="contacto_titulo">
